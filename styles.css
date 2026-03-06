@@ -745,6 +745,15 @@ footer {
   align-items: center;
   border-top: 1px solid var(--border);
 }
+.copy {
+  transform: translateX(-50%);
+  margin-left: 120px;
+}
+.copy p {
+  font-size: 10px;
+  letter-spacing: 2px;
+  opacity: 0.7;
+}
 .footer-logo {
   font-weight: 800;
   font-size: 13px;
@@ -755,8 +764,13 @@ footer {
 }
 .footer-logo span { color: var(--mint); }
 footer p { font-size: 11px; color: var(--muted); }
-.footer-socials { display: flex; gap: 24px; }
+
+.footer-socials {
+  display: flex;
+  gap: 24px;
+}
 .footer-socials a {
+  position: relative;
   font-size: 10px;
   letter-spacing: 3px;
   text-transform: uppercase;
@@ -764,8 +778,26 @@ footer p { font-size: 11px; color: var(--muted); }
   text-decoration: none;
   transition: color .3s;
 }
-.footer-socials a:hover { color: var(--mint); }
 
+.footer-socials a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -4px;
+  width: 0;
+  height: 1px;
+  background: var(--mint);
+  transition: all .3s ease;
+  transform: translateX(-50%);
+}
+
+.footer-socials a:hover {
+  color: var(--mint);
+}
+
+.footer-socials a:hover::after {
+  width: 100%;
+}
 .wip-bar {
   position: relative;
   z-index: 600;
@@ -817,6 +849,7 @@ nav.hidden {
   margin-left: auto;
   margin-right: 24px;
 }
+
 @keyframes wipPulse {
   0%, 100% { opacity: 0.3; transform: scale(1); }
   50%       { opacity: 1;   transform: scale(1.4); }
@@ -994,6 +1027,7 @@ nav.hidden {
   /* FOOTER */
   footer { flex-direction: column; gap: 16px; text-align: center; }
   .footer-socials { justify-content: center; }
+
 }
 
 @media (max-width: 400px) {
